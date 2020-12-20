@@ -7,7 +7,9 @@
     "jshint": "jshint js/. --exclude js/vendor && stylelint stylesheets/*.scss",
     "deploy": "./deploy.sh",
     "test": "karma start karma.conf.js --singleRun=true",
-    "postinstall": "opencollective postinstall"
+    "postinstall": "opencollective postinstall",
+    "build": "gulp build",
+    "build:deploy": "npm run build && firebase deploy"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.5",
@@ -38,6 +40,7 @@
     "mocha": "^3.2.0",
     "phantomjs-prebuilt": "^2.1.16",
     "roboto-fontface": "^0.4.2",
+    "run-sequence": "^2.2.1",
     "sinon": "1.17.6",
     "stylelint": "latest",
     "tiny-lr": "latest"
@@ -64,6 +67,6 @@
     "logo": "https://opencollective.com/opencollective/logo.txt"
   },
   "engines": {
-    "node": ">=8.6.0"
+    "node": ">=10.22.0"
   }
 }

@@ -12,7 +12,8 @@ var gulp = require("gulp"),
   express = require("express"),
   path = require("path"),
   watch = require("gulp-watch"),
-  autoprefixer = require("gulp-autoprefixer");
+  autoprefixer = require("gulp-autoprefixer"),
+  runSequence = require('run-sequence');
 
 gulp.task("express", function() {
   var app = express();
@@ -161,4 +162,8 @@ gulp.task("copy", function() {
 gulp.task("default", ["bundle", "copy", "express", "livereload", "watch"]);
 gulp.task("test", ["lint", "watch-test"]);
 gulp.task("testci", ["lint", "test-once"]);
-gulp.task("build", ["clean-dist", "bundle", "copy"]);
+gulp.task("build", (done) => {
+  runSequence('clean-dist', 'bundle', 'copy', () => done());
+});
+
+  // gulp.series("clean-dist", "bundle", "copy"));

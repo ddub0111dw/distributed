@@ -36,22 +36,19 @@ exports.newboard = functions.https.onRequest(function(req, res) {
 
   function createNewBoard(userId) {
     var board = admin.database().ref('/boards/' + userId);
-
     board.set({
       boardId: req.query.name,
       date_created: new Date().toString(),
-      columns: messageTypes = [
+      columns: messageTypes =  [
         {
           id: 1,
-          value: 'Went well'
-        },
-        {
+          value: '🌹'
+        }, {
           id: 2,
-          value: 'To improve'
-        },
-        {
+          value: '🥀'
+        }, {
           id: 3,
-          value: 'Action items'
+          value: '🏆'
         }
       ],
       user_id: userId,
