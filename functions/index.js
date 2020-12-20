@@ -7,7 +7,7 @@ Update functions by running the command:
   firebase deploy --only functions
 
 The function URL of newboard shown after successfully completed update operation. It may me something like the next url, but with an added parameter (?name=<board-name>) to show how it must be used:
-  https://us-central1-YOUR_PROJECT_ID.cloudfunctions.net/newboard?name=<board-name>
+  https://us-central1-funretro-buds.cloudfunctions.net/newboard?name=<board-name>
  */
 exports.newboard = functions.https.onRequest(function(req, res) {
   function createUserId() {
@@ -58,7 +58,7 @@ exports.newboard = functions.https.onRequest(function(req, res) {
       if (error) {
         return error;
       } else {
-        var url = 'https://funretro.github.io/distributed/#' + userId;
+        var url = 'https://funretro-buds.web.app/#' + userId;
         res.send(url);
       }
     });
